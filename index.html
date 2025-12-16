@@ -16,7 +16,6 @@ body {
   animation: gradientAnimation 15s ease infinite;
   color: #fff;
   line-height: 1.6;
-  direction: rtl; /* جعل النص من اليمين لليسار */
 }
 
 /* حركة تدرج الألوان للخلفية */
@@ -41,6 +40,7 @@ header {
   text-align: center;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 header h1 {
   font-size: 4em;
@@ -50,13 +50,15 @@ header h1 {
   animation: colorCycle 10s infinite;
   letter-spacing: 5px;
   cursor: pointer;
+  /* تأثير عند المرور */
   transition: transform 0.3s, text-shadow 0.3s;
 }
 header h1:hover {
-  transform: scale(1.2);
-  text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff;
+  transform: scale(1.1);
+  text-shadow: 0 0 20px #00ffff, 0 0 30px #ff4d4d;
 }
 
+/* تأثير على المدخلات */
 .search-container {
   margin: 30px auto;
   max-width: 700px;
@@ -70,21 +72,25 @@ input[type="text"] {
   font-size: 1.1em;
   outline: none;
   box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, box-shadow 0.3s;
 }
 input[type="text"]:focus {
   box-shadow: 0 12px 20px rgba(0,0,0,0.4);
   outline: none;
   border: 2px solid #00ffff;
-  transform: scale(1.02);
+  /* تأثير عند التركيز */
+  transform: translateY(-2px);
 }
 
+/* شبكة الملفات */
 .file-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
   padding: 30px 20px;
 }
+
+/* بطاقات الملفات */
 .file-card {
   background: rgba(255, 255, 255, 0.05);
   padding: 25px;
@@ -97,9 +103,9 @@ input[type="text"]:focus {
   cursor: pointer;
 }
 .file-card:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: scale(1.05);
   box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255,255,255,0.1);
 }
 .file-title {
   font-size: 1.4em;
@@ -111,7 +117,7 @@ input[type="text"]:focus {
 }
 .file-title:hover {
   color: #ff4d4d;
-  transform: rotate(2deg);
+  transform: rotate(1deg);
 }
 
 /* أزرار التحميل */
@@ -122,8 +128,7 @@ input[type="text"]:focus {
   border-radius: 50px;
   font-weight: 700;
   text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1.1em;
+  transition: all 0.3s ease, transform 0.3s;
 }
 .download-link {
   background-color: #00ffff;
@@ -175,11 +180,6 @@ input[type="text"]:focus {
   font-size: 1.4em;
   color: #00ffff;
   font-weight: bold;
-  transition: color 0.3s, text-shadow 0.3s;
-}
-.social-header span:hover {
-  color: #ff4d4d;
-  text-shadow: 0 0 10px #ff4d4d;
 }
 .social-icons {
   display: flex;
@@ -197,7 +197,7 @@ input[type="text"]:focus {
 }
 .social-icons a:hover {
   color: #00ffff;
-  transform: scale(1.1) rotate(3deg);
+  transform: scale(1.1) rotate(2deg);
 }
 
 /* تأثير نبض */
@@ -278,6 +278,7 @@ footer:hover {
 </footer>
 
 <script>
+// دوال البحث والتنزيل
 function searchFiles() {
   const input = document.getElementById('searchInput').value.toLowerCase();
   const files = document.getElementById('fileGrid').getElementsByClassName('file-card');
