@@ -16,6 +16,7 @@ body {
   animation: gradientAnimation 15s ease infinite;
   color: #fff;
   line-height: 1.6;
+  direction: rtl; /* جعل النص من اليمين لليسار */
 }
 
 /* حركة تدرج الألوان للخلفية */
@@ -48,9 +49,14 @@ header h1 {
   font-family: 'Amiri', serif;
   animation: colorCycle 10s infinite;
   letter-spacing: 5px;
+  cursor: pointer;
+  transition: transform 0.3s, text-shadow 0.3s;
+}
+header h1:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff;
 }
 
-/* تأثير على المدخلات */
 .search-container {
   margin: 30px auto;
   max-width: 700px;
@@ -70,30 +76,30 @@ input[type="text"]:focus {
   box-shadow: 0 12px 20px rgba(0,0,0,0.4);
   outline: none;
   border: 2px solid #00ffff;
+  transform: scale(1.02);
 }
 
-/* شبكة الملفات */
 .file-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
   padding: 30px 20px;
 }
-
-/* بطاقات الملفات */
 .file-card {
   background: rgba(255, 255, 255, 0.05);
   padding: 25px;
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 .file-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-10px) scale(1.02);
   box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 .file-title {
   font-size: 1.4em;
@@ -101,10 +107,11 @@ input[type="text"]:focus {
   color: #00ffff;
   text-align: center;
   font-weight: 700;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s;
 }
 .file-title:hover {
   color: #ff4d4d;
+  transform: rotate(2deg);
 }
 
 /* أزرار التحميل */
@@ -124,7 +131,7 @@ input[type="text"]:focus {
 }
 .download-link:hover {
   background-color: #00cccc;
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.05);
 }
 .direct-download-btn {
   background-color: #ff4d4d;
@@ -134,7 +141,7 @@ input[type="text"]:focus {
 }
 .direct-download-btn:hover {
   background-color: #cc4444;
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.05);
 }
 
 /* قسم التواصل الاجتماعي */
@@ -158,11 +165,21 @@ input[type="text"]:focus {
   border-radius: 50%;
   margin-right: 15px;
   border: 2px solid #00ffff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.social-header img:hover {
+  transform: rotate(15deg) scale(1.1);
+  box-shadow: 0 0 15px #00ffff;
 }
 .social-header span {
   font-size: 1.4em;
   color: #00ffff;
   font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+.social-header span:hover {
+  color: #ff4d4d;
+  text-shadow: 0 0 10px #ff4d4d;
 }
 .social-icons {
   display: flex;
@@ -180,7 +197,7 @@ input[type="text"]:focus {
 }
 .social-icons a:hover {
   color: #00ffff;
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(3deg);
 }
 
 /* تأثير نبض */
@@ -198,6 +215,11 @@ footer {
   font-size: 1em;
   color: #aaa;
   letter-spacing: 1px;
+  transition: all 0.3s;
+}
+footer:hover {
+  color: #00ffff;
+  transform: scale(1.02);
 }
 </style>
 </head>
